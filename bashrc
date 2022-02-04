@@ -132,7 +132,7 @@ export PATH
 #export PATH
 
 # add ipython PATH
-PATH=$PATH:/home/dab/.local/bin
+PATH=$PATH:$HOME/.local/bin
 export PATH
 
 
