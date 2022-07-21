@@ -135,44 +135,56 @@ export PATH
 PATH=$PATH:$HOME/.local/bin
 export PATH
 
+# add gipptools paths
+PATH=$PATH:$HOME/Programs/gipptools-2022.171/bin
+export PATH
+
+# add NonLinLoc path
+PATH=$PATH:$HOME/Programs/NonLinLoc/src/bin
+export PATH
+
+# add DoomEmacs bin path
+PATH=$PATH:$HOME/.emacs.d/bin
+export PATH
+# emacs client alias
+alias emacs="emacsclient -c -a 'emacs' &"
 
 # add neofetch to terminal
 neofetch
 
-while true; do
-    read -p "Do you wish to mount s3_seisrockht?" yn
-    case $yn in
-        [Yy]* )
-            # open text editor to copy in the AWS credentials
-            xed &
-            # ask for AWS credentials and export
-            echo "Copy credentials WITHOUT quotation marks!"
-            read -p "AWS_ACCESS_KEY_ID: " AAK
-            export AWS_ACCESS_KEY_ID=$AAK
-            read -p "AWS_SECRET_ACCESS_KEY: " ASAK
-            export AWS_SECRET_ACCESS_KEY=$ASAK
-            read -p "AWS_SESSION_TOKEN: " AST
-            export AWS_SESSION_TOKEN=$AST
-            # export constants        
-            export AWS_DEFAULT_OUTPUT="text"
-            export AWS_DEFAULT_REGION=eu-central-1
-            aws_cli_auto_prompt=on
-            # mount with rclone
-            rclone mount s3_seisrockht: ~/s3_seisrockht/ &
-            # output 'rclone config show s3_seisrcokht':
-            # [s3_seisrockht]
-            # type = s3
-            # provider = AWS
-            # env_auth = true
-            # region = eu-central-1
-            # location_constraint = eu-north-1
-            # acl = private
-        break;;
-        [Nn]* ) break;;
-        * ) echo "Please answer yes or no.";;
-    esac
-done
-# 
+#while true; do
+#    read -p "Do you wish to mount s3_seisrockht?" yn
+#    case $yn in
+#        [Yy]* )
+#            # open text editor to copy in the AWS credentials
+#            xed &
+#            # ask for AWS credentials and export
+#            echo "Copy credentials WITHOUT quotation marks!"
+#            read -p "AWS_ACCESS_KEY_ID: " AAK
+#            export AWS_ACCESS_KEY_ID=$AAK
+#            read -p "AWS_SECRET_ACCESS_KEY: " ASAK
+#            export AWS_SECRET_ACCESS_KEY=$ASAK
+#            read -p "AWS_SESSION_TOKEN: " AST
+#            export AWS_SESSION_TOKEN=$AST
+#            # export constants        
+#            export AWS_DEFAULT_OUTPUT="text"
+#            export AWS_DEFAULT_REGION=eu-central-1
+#            aws_cli_auto_prompt=on
+#            # mount with rclone
+#            rclone mount s3_seisrockht: ~/s3_seisrockht/ &
+#            # output 'rclone config show s3_seisrockht':
+#            # [s3_seisrockht]
+#            # type = s3
+#            # provider = AWS
+#            # env_auth = true
+#            # region = eu-central-1
+#            # location_constraint = eu-north-1
+#            # acl = private
+#        break;;
+#        [Nn]* ) break;;
+#        * ) echo "Please answer yes or no.";;
+#    esac
+#done
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
